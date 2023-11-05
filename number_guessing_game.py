@@ -52,7 +52,11 @@ def Easy():
     number = random.randint(1,30)
 ## GAME LOOP ##
     while counter < 20:
-        guess = int(input("Please enter your guess: "))
+        try:
+            guess = int(input("Please enter your guess: "))
+        except ValueError:
+            print("Please enter a valid guess")
+            continue
         checking = check(guess, number)
         if checking == "You guessed correctly!":
             print(checking)
@@ -74,7 +78,11 @@ def Medium():
     number = random.randint(1,50)
 ## GAME LOOP ##
     while counter < 15:
-        guess = int(input("Please enter your guess: "))
+        try:
+            guess = int(input("Please enter your guess: "))
+        except ValueError:
+            print("Please enter a valid guess")
+            continue
         checking = check(guess, number)
         if checking == "You guessed correctly!":
             print(checking)
@@ -96,7 +104,11 @@ def Hard():
     number = random.randint(1,50)
 ## GAME LOOP ##
     while counter < 10:
-        guess = int(input("Please enter your guess: "))
+        try:
+            guess = int(input("Please enter your guess: "))
+        except ValueError:
+            print("Please enter a valid guess")
+            continue
         checking = check(guess, number)
         if checking == "You guessed correctly!":
             print(checking)
@@ -119,7 +131,11 @@ def Infernal():
     number = random.randint(1,100)
 ## GAME LOOP ##
     while counter < 5:
-        guess = int(input("Please enter your guess: "))
+        try:
+            guess = int(input("Please enter your guess: "))
+        except ValueError:
+            print("Please enter a valid guess")
+            continue
         checking = check(guess, number)
         if checking == "You guessed correctly!":
             print(checking)
