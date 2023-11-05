@@ -20,8 +20,8 @@ def menu():
         Hard()
     elif difficulty == 4:
         Infernal()
-    elif difficulty == 5:
-        custom()
+    # elif difficulty == 5:
+    #     custom()
     else:
         print("Please enter a valid number from the menu") # NEED TO CATCH IF USER ENTERS STRING/INVALID INPUT
 
@@ -154,17 +154,17 @@ def Infernal():
         print(f"The number was {number}")
         play_again()
 
-def custom():
-    print("--------------------")
-    print("""Custom mode selected.\n""")
-    print("In this mode you are able to set the range in which a number can be generated in")
-    print("Also you will set the number of guesses you will recieve")
-## SET VARIABLES ##
-    try:
-        counter = int(input("Please enter the number of guesses you would like to have: "))
-    except ValueError:
-        print("Please enter a valid number")
-        custom()
+# def custom():
+#     print("--------------------")
+#     print("""Custom mode selected.\n""")
+#     print("In this mode you are able to set the range in which a number can be generated in")
+#     print("Also you will set the number of guesses you will recieve")
+# ## SET VARIABLES ##
+#     try:
+#         counter = int(input("Please enter the number of guesses you would like to have: "))
+#     except ValueError:
+#         print("Please enter a valid number")
+#         custom()
     
 
 # Main
