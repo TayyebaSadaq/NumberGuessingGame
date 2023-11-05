@@ -2,12 +2,16 @@ import random
 
 ### MAIN MENU ###
 def menu():
-    difficulty = int(input("""Please enter a number from the menu to proceed:
-    1 - Easy
-    2 - Medium
-    3 - Hard
-    4 - Infernal \n"""))
-
+    try:
+        difficulty = int(input("""Please enter a number from the menu to proceed:
+        1 - Easy
+        2 - Medium
+        3 - Hard
+        4 - Infernal
+        5 - Custom \n"""))
+    except ValueError:
+        print("Please choose an option from the menu")
+        menu()
     if difficulty == 1:
         Easy()
     elif difficulty == 2:
@@ -16,6 +20,8 @@ def menu():
         Hard()
     elif difficulty == 4:
         Infernal()
+    elif difficulty == 5:
+        custom()
     else:
         print("Please enter a valid number from the menu") # NEED TO CATCH IF USER ENTERS STRING/INVALID INPUT
 
@@ -122,7 +128,6 @@ def Hard():
         print(f"The number was {number}")
         play_again()
 
-
 def Infernal():
     print("--------------------")
     print("""Infernal mode selected.\nattempts = +5.\nThe number is between 1 and 100\nGood Luck!""")
@@ -149,8 +154,22 @@ def Infernal():
         print(f"The number was {number}")
         play_again()
 
+def custom():
+    print("--------------------")
+    print("""Custom mode selected.\n""")
+    print("In this mode you are able to set the range in which a number can be generated in")
+    print("Also you will set the number of guesses you will recieve")
+## SET VARIABLES ##
+    try:
+        counter = int(input("Please enter the number of guesses you would like to have: "))
+    except ValueError:
+        print("Please enter a valid number")
+        custom()
+    
+
 # Main
 print("Hello and welcome to the Number Guessing Game.\nAs you can imagine the idea is thatnyou have to try and guess a randomly\ngenerated number within a certain amount of attempts\n")
 print("This game has 4 difficulty modes ~ \nEasy | Medium | Hard | Infernal.\n")
+print("There is also an option to create a custom game mode.\n")
 menu()
     
