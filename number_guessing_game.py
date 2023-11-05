@@ -46,24 +46,25 @@ def play_again():
 ### DIFFICULTY SETTINGS ###
 def Easy():
     print("--------------------")
-    print("""Easy mode selected.\nattempts = +20.\nThe number is between 1 and 30\nGood Luck!""")
+    print("""Easy mode selected.\nattempts = +20.\nThe number is between 1 and 30\nGood Luck!\n""")
 ## SET VARIABLES ##
     counter = 0
     number = random.randint(1,30)
 ## GAME LOOP ##
     while counter < 20:
-        guess = input("Please enter your guess: ")
-        if type(guess) != int:
-            raise TypeError("Please guess a whole number")
-        else:
-            checking = check(guess, number)
-            if checking == "You guessed correctly!":
-                print(checking)
-                play_again()
-            elif checking == "Your guess is too low" or "Your guess is too high":
-                print(checking)
-                counter = counter + 1
-                print(f"You have {20 - counter} attempts left")
+        guess = int(input("Please enter your guess: "))
+        checking = check(guess, number)
+        if checking == "You guessed correctly!":
+            print(checking)
+            play_again()
+        elif checking == "Your guess is too low" or "Your guess is too high":
+            print(checking)
+            counter = counter + 1
+            print(f"You have {20 - counter} attempts left\n")
+    if counter == 20:
+        print("You have run out of attempts, better luck next time!")
+        print(f"The number was {number}")
+        play_again()
 
 def Medium():
     print("--------------------")
@@ -74,7 +75,18 @@ def Medium():
 ## GAME LOOP ##
     while counter < 15:
         guess = int(input("Please enter your guess: "))
-
+        checking = check(guess, number)
+        if checking == "You guessed correctly!":
+            print(checking)
+            play_again()
+        elif checking == "Your guess is too low" or "Your guess is too high":
+            print(checking)
+            counter = counter + 1
+            print(f"You have {15 - counter} attempts left\n")
+    if counter == 15:
+        print("You have run out of attempts, better luck next time!")
+        print(f"The number was {number}")
+        play_again()
 
 def Hard():
     print("--------------------")
@@ -86,7 +98,17 @@ def Hard():
     while counter < 10:
         guess = int(input("Please enter your guess: "))
         checking = check(guess, number)
-        
+        if checking == "You guessed correctly!":
+            print(checking)
+            play_again()
+        elif checking == "Your guess is too low" or "Your guess is too high":
+            print(checking)
+            counter = counter + 1
+            print(f"You have {10 - counter} attempts left\n")
+    if counter == 10:
+        print("You have run out of attempts, better luck next time!")
+        print(f"The number was {number}")
+        play_again()
 
 
 def Infernal():
@@ -98,7 +120,18 @@ def Infernal():
 ## GAME LOOP ##
     while counter < 5:
         guess = int(input("Please enter your guess: "))
-        
+        checking = check(guess, number)
+        if checking == "You guessed correctly!":
+            print(checking)
+            play_again()
+        elif checking == "Your guess is too low" or "Your guess is too high":
+            print(checking)
+            counter = counter + 1
+            print(f"You have {5 - counter} attempts left\n")
+    if counter == 5:
+        print("You have run out of attempts, better luck next time!")
+        print(f"The number was {number}")
+        play_again()
 
 # Main
 print("Hello and welcome to the Number Guessing Game.\nAs you can imagine the idea is thatnyou have to try and guess a randomly\ngenerated number within a certain amount of attempts\n")
