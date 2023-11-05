@@ -51,6 +51,32 @@ def Easy():
 
 def Medium():
     print("--------------------")
+    print("""Medium mode selected.\nattempts = +15.\nThe number is between 1 and 50\nGood Luck!""")
+## SET VARIABLES ##
+    counter = 0
+    number = random.randint(1,50)
+## GAME LOOP ##
+    while counter < 15:
+        guess = int(input("Please enter your guess: "))
+        if guess == number:
+            print(f"Congratulations! You guessed the number in {counter} attempts")
+            break
+        elif guess < number:
+            print("Your guess is too low")
+        elif guess > number:
+            print("Your guess is too high")
+        counter += 1
+    else:
+        print(f"You have run out of attempts, the number was {number}\n")
+## PLAY AGAIN ##
+    play = int(input("To return to the menu press 1, to exit press 2\n"))
+    if play == 1:
+        print("--------------------")
+        menu()
+    elif play == 2:
+        exit()
+    else:
+        print("Please enter a valid number from the menu")
 
 def Hard():
     print("--------------------")
