@@ -19,6 +19,19 @@ def menu():
     else:
         print("Please enter a valid number from the menu") # NEED TO CATCH IF USER ENTERS STRING/INVALID INPUT
 
+## CHECK GUESS ##
+def check(guess, number):
+    correct_msg = "You guessed correctly!"
+    low_msg = "Your guess is too low"
+    high_msg = "Your guess is too high"
+    
+    if guess == number:
+        return correct_msg
+    elif guess < number:
+        return low_msg
+    elif guess > number:
+        return high_msg        
+
 ## REPLAY SELECTION ##   
 def play_again():
     play = int(input("To return to the menu press 1, to exit press 2\n"))
@@ -39,7 +52,18 @@ def Easy():
     number = random.randint(1,30)
 ## GAME LOOP ##
     while counter < 20:
-        guess = int(input("Please enter your guess: "))
+        guess = input("Please enter your guess: ")
+        if type(guess) != int:
+            raise TypeError("Please guess a whole number")
+        else:
+            checking = check(guess, number)
+            if checking == "You guessed correctly!":
+                print(checking)
+                play_again()
+            elif checking == "Your guess is too low" or "Your guess is too high":
+                print(checking)
+                counter = counter + 1
+                print(f"You have {20 - counter} attempts left")
 
 def Medium():
     print("--------------------")
@@ -61,8 +85,8 @@ def Hard():
 ## GAME LOOP ##
     while counter < 10:
         guess = int(input("Please enter your guess: "))
-
-
+        checking = check(guess, number)
+        
 
 
 def Infernal():
