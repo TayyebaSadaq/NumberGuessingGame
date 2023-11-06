@@ -20,8 +20,8 @@ def menu():
         Hard()
     elif difficulty == 4:
         Infernal()
-    # elif difficulty == 5:
-    #     custom()
+    elif difficulty == 5:
+        Custom()
     else:
         print("Please enter a valid number from the menu") # NEED TO CATCH IF USER ENTERS STRING/INVALID INPUT
 
@@ -154,18 +154,57 @@ def Infernal():
         print(f"The number was {number}")
         play_again()
 
-# def custom():
-#     print("--------------------")
-#     print("""Custom mode selected.\n""")
-#     print("In this mode you are able to set the range in which a number can be generated in")
-#     print("Also you will set the number of guesses you will recieve")
-# ## SET VARIABLES ##
-#     try:
-#         counter = int(input("Please enter the number of guesses you would like to have: "))
-#     except ValueError:
-#         print("Please enter a valid number")
-#         custom()
-    
+def Custom():
+    print("--------------------")
+    print("""Custom mode selected.\n""")
+    print("In this mode you are able to set the range in which a number can be generated in")
+    print("Also you will set the number of guesses you will recieve")
+## SET VARIABLES ##
+    while True:
+        try:
+            low_range = int(input("Please enter the lowest number we can generate: "))
+        except ValueError:
+            print("Sorry, please enter a valid number")
+            continue
+        else:
+            break
+    while True:
+        try:
+            high_range = int(input("Please enter the highest number we can generate: "))
+        except ValueError:
+            print("Sorry, please enter a valid number")
+            continue
+        else:
+            break
+    while True:
+        try:
+            attempts = int(input("Please enter the number of attempts you would like: "))
+        except ValueError:
+            print("Sorry, please enter a valid number")
+            continue
+        else:
+            break
+    counter = 0
+    number = random.randint(low_range,high_range)
+## GAME LOOP ##
+    while counter < attempts:
+        try:
+            guess = int(input("Please enter your guess: "))
+        except ValueError:
+            print("Please enter a valid guess")
+            continue
+        checking = check(guess, number)
+        if checking == "You guessed correctly!":
+            print(checking)
+            play_again()
+        elif checking == "Your guess is too low" or "Your guess is too high":
+            print(checking)
+            counter = counter + 1
+            print(f"You have {attempts - counter} attempts left\n")
+    if counter == attempts:
+        print("You have run out of attempts, better luck next time!")
+        print(f"The number was {number}")
+        play_again()
 
 # Main
 print("Hello and welcome to the Number Guessing Game.\nAs you can imagine the idea is thatnyou have to try and guess a randomly\ngenerated number within a certain amount of attempts\n")
